@@ -1,8 +1,8 @@
 import { Col, Row, Image, Button } from "react-bootstrap"
-import trash from '../assets/trash-outline.svg'
-import save from '../assets/save-outline.svg'
+import trash from '../assets/img/trash-outline.svg'
+import save from '../assets/img/save-outline.svg'
 import {icon} from '../assets/style'
-import undo from '../assets/arrow-undo-outline.svg'
+import undo from '../assets/img/arrow-undo-outline.svg'
 
 const OrderButton = () => {
     return ( 
