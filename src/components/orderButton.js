@@ -1,8 +1,31 @@
+import { Col, Row, Image, Button } from "react-bootstrap"
+import trash from '../assets/trash-outline.svg'
+import save from '../assets/save-outline.svg'
+import {icon} from '../assets/style'
+import undo from '../assets/arrow-undo-outline.svg'
+
 const OrderButton = () => {
     return ( 
-        <div>
-            orderButton
-        </div>
+        <Col md="12">
+            <Row>
+                <Col className=" text-left">
+                    <Button className="btn-light btn-outline-danger m-3">
+                        <Image src={trash} style={icon}/>
+                        Удалить заявку
+                    </Button>
+                </Col>
+                <Col className="text-end text-right">
+                    <Button className="btn-info m-3">
+                        <Image src={save} style={icon}/>
+                        Внести изменения
+                    </Button>
+                    <Button className="btn-warning m-3">
+                        <Image src={undo} style={icon}/>
+                        Отменить изменения
+                    </Button>
+                </Col>
+            </Row>
+        </Col>
      );
 }
  
