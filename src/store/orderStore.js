@@ -8,8 +8,12 @@ class OrderStore {
         this._location = []
         this._nameZk = []
         this._orders = [{id:1,name:'dave'},{id:2,name:'nike'}]
+        this._event = [{date: "12-12-2021", comment:"123", creator: "user"}]
 
         makeAutoObservable(this)
+    }
+    setEvent(item) {
+        this._event = item
     }
     setOrders(item) {
         this._orders = item
@@ -28,6 +32,9 @@ class OrderStore {
     }
     setUser(item) {
         this._user = item
+    }
+    get event() {
+        return this._event
     }
     get orders() {
         return this._orders
