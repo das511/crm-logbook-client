@@ -1,11 +1,14 @@
 import { observer } from "mobx-react-lite";
 import { useContext, useState } from "react";
-import { Card, Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Card, Container, Form, Button, Row, Col, Image } from "react-bootstrap";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { registration, logIn } from "../http/userApi";
 import { LOGIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
 import { Context } from '../index'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import person from '../assets/img/person-outline.svg'
+import loginIcon from '../assets/img/log-in-outline.svg'
+import { icon } from '../assets/style'
 
 const Auth = observer(() => {
     const {user} = useContext(Context)
@@ -95,15 +98,15 @@ const Auth = observer(() => {
                     <Row className="d-flex justify-content-between mt-3">
                         {
                             isLogin ?
-                            <Col xs="8"><div> Нет аккаунта ? <NavLink to={ REGISTRATION_ROUTE }>Зарегестрируйтесь!</NavLink></div></Col>
+                            <Col><div> Нет аккаунта ? <NavLink to={ REGISTRATION_ROUTE }>Зарегестрируйтесь!</NavLink></div></Col>
                             :
-                            <Col ms="8"><div> Есть аккаунт ? <NavLink to={ LOGIN_ROUTE }>Войдите!</NavLink></div></Col>
+                            <Col><div> Есть аккаунт ? <NavLink to={ LOGIN_ROUTE }>Войдите!</NavLink></div></Col>
                         }
                         {
                             isLogin ?
-                            <Col xs="2"><Button onClick={click} className="btn-success">Войти</Button></Col>
+                            <Col className="text-end text-right"><Button onClick={click} className="btn-success"><Image src={ loginIcon } style={icon} className=""/>Войти</Button></Col>
                             :
-                            <Col xs="4"><Button onClick={click} className="btn-success">Зарегистрироваться</Button></Col>
+                            <Col className="text-end text-right"><Button onClick={click} className="btn-success"><Image src={ person } style={icon} className=""/>Зарегистрироваться</Button></Col>
                         }
                         
                     </Row>
