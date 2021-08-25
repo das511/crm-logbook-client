@@ -21,23 +21,23 @@ const OrdrInfo = ({order}) => {
                             <Row className="mt-3" >   
                                 <Col>
                                     <Form.Label><b>Заявитель</b></Form.Label>
-                                    <Form.Control placeholder="ФИО" value={order.customer}/>
+                                    <Form.Control placeholder="ФИО" value={order.customer || ''} onChange={ e => {order.customer = e.target.value; console.log(order);}}/>
                                 </Col>
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="Телефон" value={order.phone}/>
+                                    <Form.Control placeholder="Телефон" value={order.phone || ''}/>
                                 </Col>
                             </Row>
                             <Row className="mt-3" >   
                                 <Col>
                                     <Form.Label><b>Адрес</b></Form.Label>
-                                    <Form.Control placeholder="Жилой массив" value={order.nameZkId}/>
+                                    <Form.Control placeholder="Жилой массив" value={order.nameZkId || ''}/>
                                 </Col>
                             </Row>
                             <Row className="mt-3" >
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="Улица" value={order.address}/>
+                                    <Form.Control placeholder="Улица" value={order.address || ''}/>
                                 </Col>
                             </Row>
                         </Col>
@@ -45,23 +45,23 @@ const OrdrInfo = ({order}) => {
                             <Row className="mt-3">   
                                 <Col>
                                     <Form.Label><b>Исполнитель</b></Form.Label>
-                                    <Form.Control placeholder="Тип заявки" value={order.postTypeId}/>
+                                    <Form.Control placeholder="Тип заявки" value={order.postTypeId || ''}/>
                                 </Col>
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="ФИО" value={order.contractor}/>
-                                </Col>
-                            </Row>
-                            <Row className="mt-3">   
-                                <Col>
-                                    <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="Локация" value={order.locationId}/>
+                                    <Form.Control placeholder="ФИО" value={order.contractor || ''}/>
                                 </Col>
                             </Row>
                             <Row className="mt-3">   
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="Назначенная дата" value={order.dateAppointed}/>
+                                    <Form.Control placeholder="Локация" value={order.locationId || ''}/>
+                                </Col>
+                            </Row>
+                            <Row className="mt-3">   
+                                <Col>
+                                    <Form.Label>&nbsp;</Form.Label>
+                                    <Form.Control placeholder="Назначенная дата" value={order.dateAppointed || ''}/>
                                 </Col>
                             </Row>
                         </Col>
@@ -69,17 +69,17 @@ const OrdrInfo = ({order}) => {
                     <Row className="mt-3">
                         <Col md="12">
                             <Form.Label><b>Комментарий</b></Form.Label>
-                            <Form.Control as="textarea" rows={3} style={{resize:"none"}} value={order.comment}/>
+                            <Form.Control as="textarea" rows={3} style={{resize:"none"}} value={order.comment || ''}/>
                         </Col>
                     </Row>
                     <Row className="mt-3">
                         <Col>
                             <Form.Label><b>Фотографии до</b></Form.Label>
-                            <div style={scroll} className="border border-success p-2">{order.photoBefore}</div>
+                            <div style={scroll} className="border border-success p-2">{order.photoBefore || ''}</div>
                         </Col>
                         <Col>
                             <Form.Label><b>Фотографии после</b></Form.Label>
-                            <div style={scroll} className="border border-success p-2">{order.photoAfter}</div>
+                            <div style={scroll} className="border border-success p-2">{order.photoAfter || ''}</div>
                         </Col>
                     </Row>
                 </Form>
