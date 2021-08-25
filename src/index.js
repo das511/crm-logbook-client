@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import OrderStore from './store/orderStore';
 import UserStore from './store/userStore';
+import 'react-notifications/lib/notifications.css';
 
 export const Context = createContext(null)
 
