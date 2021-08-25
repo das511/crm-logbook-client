@@ -7,22 +7,9 @@ import create from '../assets/img/create-outline.svg'
 import search from '../assets/img/search-outline.svg'
 import filter from '../assets/img/filter-outline.svg'
 import {icon} from '../assets/style'
-import { useContext, useEffect } from "react";
-import { Context } from "..";
-import { fetchAll } from '../http/guideApi'
-import { fetchAllOrder } from "../http/orderApi";
 
 const Order = observer( () => {
     const history = useHistory()
-    const {order} = useContext(Context)
-
-    useEffect(() => {
-        fetchAll('status').then(data=>order.setStatus(data))
-        fetchAll('postType').then(data=>order.setPostType(data))
-        fetchAll('location').then(data=>order.setLocation(data))
-        fetchAll('nameZk').then(data=>order.setNameZk(data))
-        fetchAllOrder().then(data=>order.setOrders(data.rows))
-    })
 
     return ( 
         <Container>
