@@ -5,6 +5,7 @@ import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { registration, logIn } from "../http/userApi";
 import { LOGIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
 import { Context } from '../index'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const Auth = observer(() => {
     const {user} = useContext(Context)
@@ -24,7 +25,7 @@ const Auth = observer(() => {
             user.setIsAuth(true)
             history.push(ORDER_ROUTE)
         } catch (error) {
-            alert(error.response.data.message);
+            NotificationManager.error(error.response.data.message, 'Ошибка авторизации');
         }
     }
     const [login,setLogin] = useState('')
@@ -35,6 +36,7 @@ const Auth = observer(() => {
     const [userRoleId] = useState(1)
     return ( 
         <Container className="d-flex justify-content-center align-items-center" style={{height: window.innerHeight - 54}}>
+            <NotificationContainer/>
             <Card className="w-50 p-5">
                 <h2 className="m-auto">{isLogin ? 'Авторизация' : 'Регистрация'}</h2>
                 <Form className="d-flex flex-column">
