@@ -11,3 +11,12 @@ export const ORDER_HEADER = [
     "Исполнитель",
     "Комментарий"
 ]
+
+export const colorStatus = [
+    {color: "#d73d6c", status: "Создано" },
+    {color: "#d57276", status: "Исполнитель потвердил" },
+    {color: "#d6c2bc", status: "Выполнено" },
+    {color: "#c0cccc", status: "Проверено" },
+    {color: "#65b2c6", status: "Закрыта" },
+    {color: "#6f6c9e", status: "Не выполнена"}
+]
