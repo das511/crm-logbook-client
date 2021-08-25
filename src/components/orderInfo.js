@@ -2,30 +2,14 @@ import { Col, Container, Row, Image, Form } from "react-bootstrap";
 import { icon, scroll, statusColor } from "../assets/style";
 import tag from '../assets/img/pricetag-outline.svg'
 
-const OrdrInfo = () => {
-    const order = {}
-    // const order = {
-    //     id: 5,
-    //     statusId: "Создана",
-    //     customer: "Заявитель ззззз",
-    //     phone: "89112709067",
-    //     nameZkId: 1,
-    //     locationId:1,
-    //     address: "Улица Пшкина дом колотушкина",
-    //     postTypeId: 3,
-    //     contractor: "Исполнитель иии",
-    //     appointedDate: '25.12.2021',
-    //     comment: "Ghjdthjxzysq прочерочный комментарий",
-    //     photoBefore: 'http://localhost:3000/assets/before.svg',
-    //     photoAfter: 'http://localhost:3000/assets/after.svg',
-    // }
+const OrdrInfo = ({order}) => {
     return ( 
         <Col md="9">
             <Container>
                 <Form>
                     <Row>
                         <Col ms="auto">
-                            <h4 className="setion-title p-3" style={statusColor(order.color||"#d73d6c")}>
+                            <h4 className="setion-title p-3" style={statusColor(order.statusId||"#d73d6c")}>
                                 <Image src={tag} style={icon}/>
                                 { order.id ? 'Заявка № ' + order.id + ' - ' : '' }
                                 <b> {order.statusId || 'Заявка создается'} </b>
@@ -77,7 +61,7 @@ const OrdrInfo = () => {
                             <Row className="mt-3">   
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="Назначенная дата" value={order.appointedDate}/>
+                                    <Form.Control placeholder="Назначенная дата" value={order.dateAppointed}/>
                                 </Col>
                             </Row>
                         </Col>
