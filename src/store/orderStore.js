@@ -8,7 +8,7 @@ class OrderStore {
         this._location = []
         this._nameZk = []
         this._orders = [{id:1,name:'dave'},{id:2,name:'nike'}]
-        this._event = [{date: "12-12-2021", comment:"123", creator: "user"}]
+        this._event = []
 
         makeAutoObservable(this)
     }
