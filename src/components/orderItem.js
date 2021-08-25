@@ -1,6 +1,10 @@
+import { useHistory } from "react-router-dom";
+import { ORDER_ROUTE } from "../utils/consts";
+
 const OrderItem = ({order}) => {
+    const history = useHistory()
     return ( 
-        <tr onClick={()=>console.log('clicked: '+ order.id)}>
+        <tr onClick={()=> history.push(ORDER_ROUTE + '/' + order.id)}>
             <td>{ order.id }</td>
             <td>{ order.cratedAt }</td>
             <td>{ order.address }</td>
