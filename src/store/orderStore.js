@@ -8,12 +8,8 @@ class OrderStore {
         this._location = []
         this._nameZk = []
         this._orders = []
-        this._event = []
 
         makeAutoObservable(this)
-    }
-    setEvent(item) {
-        this._event = item
     }
     setOrders(item) {
         this._orders = item
@@ -32,9 +28,6 @@ class OrderStore {
     }
     setUser(item) {
         this._user = item
-    }
-    get event() {
-        return this._event
     }
     get orders() {
         return this._orders
