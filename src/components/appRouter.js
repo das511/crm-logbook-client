@@ -1,10 +1,11 @@
+import { observer } from 'mobx-react-lite';
 import {React, useContext} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Context } from '../index';
 import { authRoutes, publicRoutes } from '../routes';
-import { ORDER_ROUTE } from '../utils/consts';
+import { ORDER_ROUTE, LOGIN_ROUTE } from '../utils/consts';
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
     const { user } = useContext(Context)
     
     return ( 
@@ -17,9 +18,9 @@ const AppRouter = () => {
             { publicRoutes.map(({path, Component}) => 
                 <Route key={ path } path={ path } component={ Component } exact/>
             )}
-            <Redirect to={user.isAuth ? ORDER_ROUTE: ORDER_ROUTE}/>
+            <Redirect to={user.isAuth ? ORDER_ROUTE: LOGIN_ROUTE}/>
         </Switch>
      );
-}
+})
  
 export default AppRouter;
