@@ -12,6 +12,8 @@ export const ORDER_HEADER = [
     "Комментарий"
 ]
 
+export const API_URL = 'http://localhost:5000/'
+
 export const colorStatus = [
     {color: "#d73d6c", status: "Создано" },
     {color: "#d57276", status: "Исполнитель потвердил" },
