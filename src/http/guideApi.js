@@ -1,6 +1,6 @@
 import { $authHost } from "./index"
 
-export const create = async (guide, json) => {
+export const createGuideRow = async (guide, json) => {
     const {data} = await $authHost.post("/api/" + guide + "/", json)
     return data
 }
