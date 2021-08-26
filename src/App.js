@@ -8,25 +8,34 @@ import NavBar from "./components/navBar";
 import { check } from "./http/userApi";
 import { fetchAll } from "./http/guideApi";
 import { fetchAllOrder } from "./http/orderApi";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const App = observer(() => {
   const {user} = useContext(Context)
   const {order} = useContext(Context)
   const [loading, setLoading] = useState(true)
-
   useEffect(() => {
-    setTimeout(()=>{
-      fetchAll('status').then(data=>order.setStatus(data))
-      fetchAll('postType').then(data=>order.setPostType(data))
-      fetchAll('location').then(data=>order.setLocation(data))
-      fetchAll('nameZk').then(data=>order.setNameZk(data))
+    setTimeout(async ()=>{
+      try {
+        await check().then(data=>{
+          user.setUser(data)
+          user.setIsAuth(true)
+        })
 
-      fetchAllOrder().then(data=>order.setOrders(data.rows))
+        await fetchAllOrder().then(data=>order.setOrders(data.rows))
+        
+        fetchAll('status').then(data=>order.setStatus(data))
+        fetchAll('postType').then(data=>order.setPostType(data))
+        fetchAll('location').then(data=>order.setLocation(data))
+        fetchAll('nameZk').then(data=>order.setNameZk(data))
+        fetchAll('address').then(data=>order.setAddress(data))
 
-      check().then(data=>{
-        user.setUser(data)
-        user.setIsAuth(true)
-      }).finally(()=>setLoading(false))
+      } catch (error) {
+        NotificationManager.error(error.response.data.message || '', 'Ошибка');
+      }
+      finally {
+        setLoading(false)
+      }
     },1000)
     
   }, [user,order])
@@ -37,6 +46,7 @@ const App = observer(() => {
 
   return (
     <BrowserRouter>
+      <NotificationContainer/>
       <NavBar></NavBar>
       <AppRouter></AppRouter>
     </BrowserRouter>
