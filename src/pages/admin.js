@@ -1,32 +1,60 @@
 import { useState } from "react";
-import { Modal, Row, Button } from "react-bootstrap";
-import AdminLeftPanel from "../components/adminLeftPanel";
+import { Row, Button, Col, Container, Image } from "react-bootstrap";
 import AdminRightPanel from "../components/adminRightPanel";
+import ModalStatus from "../components/modalStatus";
+import add from '../assets/img/add-circle-outline.svg'
+import { icon } from "../assets/style";
+import rocket from '../assets/img/rocket-outline.svg'
+import ModalAddress from "../components/modalAddress";
+import ModalNameZk from "../components/modalNameZk";
+import ModalLocation from "../components/modalLocation";
+import ModalPostType from "../components/modalPostType";
 
 const Admin = () => {
-    const [show,setShow] = useState(false)
+    const [showModalStatus,setShowStatus] = useState(false)
+    const [showModalPostType,setShowPostType] = useState(false)
+    const [showModalNameZk,setShowNameZk] = useState(false)
+    const [showModalLocation,setShowLocation] = useState(false)
+    const [showModalAddress,setShowAddress] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return ( 
         <Row>
-            <AdminLeftPanel handleShow={handleShow} />
+            <Col md="2" className="bg-success" style={{height:window.innerHeight}}>
+                <Container className="m-2 d-grid gap-2">
+                    <Button variant="outline-light p-2 mt-3 d-flex" onClick={() => { setShowNameZk(true) }}>
+                        <Image src={ add } style={icon}/>
+                        Добавить жилой массив
+                    </Button>
+                    <Button variant="outline-light p-2 mt-3 d-flex" onClick={() => { setShowAddress(true) }}>
+                        <Image src={ add } style={icon}/>
+                        Добавить адрес
+                    </Button>
+                    <Button variant="outline-light p-2 mt-3 d-flex" onClick={() => { setShowPostType(true) }}>
+                        <Image src={ add } style={icon}/>
+                        Добавить тип заявки
+                    </Button>
+                    <Button variant="outline-light p-2 mt-3 d-flex" onClick={() => { setShowStatus(true) }}>
+                        <Image src={ add } style={icon}/>
+                        Добавить статус
+                    </Button>
+                    <Button variant="outline-light p-2 mt-3 d-flex" onClick={() => { setShowLocation(true) }}>
+                        <Image src={ add } style={icon}/>
+                        Добавить локацию
+                    </Button>
+                    
+                    <Button variant="outline-light p-2 d-flex" style={{marginTop: 100}}>
+                        <Image src={ rocket } style={icon}/>
+                        Запросить повышение
+                    </Button>
+                </Container>   
+            </Col>
             <AdminRightPanel/>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                </Button>
-                </Modal.Footer>
-            </Modal>
+            <ModalStatus show={showModalStatus} handleClose={setShowStatus}/>
+            <ModalAddress show={showModalAddress} handleClose={setShowAddress}/>
+            <ModalNameZk show={showModalNameZk} handleClose={setShowNameZk}/>
+            <ModalLocation show={showModalLocation} handleClose={setShowLocation}/>
+            <ModalPostType show={showModalPostType} handleClose={setShowPostType}/>
         </Row>
      );
 }
