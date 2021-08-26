@@ -49,7 +49,7 @@ const OrdrInfo = ({order}) => {
                                 </Col>
                                 <Col>
                                     <Form.Label>&nbsp;</Form.Label>
-                                    <Form.Control placeholder="ФИО" value={order.contractor || ''}/>
+                                    <Form.Control placeholder="ФИО" value={order.userId || ''}/>
                                 </Col>
                             </Row>
                             <Row className="mt-3">   
