@@ -13,6 +13,31 @@ const AdminRightPanel = () => {
                         <Table hover>
                             <thead>
                                 <tr>
+                                    <th>Адрес</th>
+                                    <th>Дом</th>
+                                    <th>Корпус</th>
+                                    <th>Жилой массив</th>
+                                </tr>
+                            </thead>
+                            <tbody>    
+                                {
+                                    order.address.map(({id,value, house,liter,nameZkId})=> 
+                                    <tr key={id} className="m-1 p-2">
+                                        <td>{ value }</td>
+                                        <td>{ house }</td>
+                                        <td>{ liter }</td>
+                                        <td>{ nameZkId }</td>
+                                    </tr>)
+                                }
+                            </tbody>
+                        </Table>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="m-3 border border-success rounded">
+                        <Table hover>
+                            <thead>
+                                <tr>
                                     <th>Статус</th>
                                     <th>Цвет</th>
                                 </tr>
@@ -28,17 +53,18 @@ const AdminRightPanel = () => {
                         <Table hover>
                             <thead>
                                 <tr>
-                                    <th>Локация</th>
+                                    <th>Жилой массив</th>
                                 </tr>
                             </thead>
                             <tbody>    
                                 {
-                                    order.location.map(({id,value })=> <tr key={id} className="m-1 p-2"><td>{ value }</td></tr>)
+                                    order.nameZk.map(({id,value })=> <tr key={id} className="m-1 p-2"><td>{ value }</td></tr>)
                                 }
                             </tbody>
                         </Table>
                     </Col>
-                </Row><Row>
+                </Row>
+                <Row>
                     <Col className="m-3 border border-success rounded">
                         <Table hover>
                             <thead>
@@ -57,12 +83,12 @@ const AdminRightPanel = () => {
                         <Table hover>
                             <thead>
                                 <tr>
-                                    <th>Жилой массив</th>
+                                    <th>Локация</th>
                                 </tr>
                             </thead>
                             <tbody>    
                                 {
-                                    order.nameZk.map(({id,value })=> <tr key={id} className="m-1 p-2"><td>{ value }</td></tr>)
+                                    order.location.map(({id,value })=> <tr key={id} className="m-1 p-2"><td>{ value }</td></tr>)
                                 }
                             </tbody>
                         </Table>
