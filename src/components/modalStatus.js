@@ -26,7 +26,7 @@ const ModalStatus = ({show, handleClose}) => {
             <Modal.Body>
                 <Form>
                     <Form.Control className="mt-3" onChange={(e)=>{ setValue(e.target.value) }} placeholder="Введите статус"/>
-                    <Form.Control className="mt-3" onChange={(e)=>{ setColor(e.target.value) }} placeholder="Выберете цвет"/>
+                    <Form.Control className="mt-3" onChange={(e)=>{ setColor(e.target.value) }} placeholder="Выберете цвет" type="color"/>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
