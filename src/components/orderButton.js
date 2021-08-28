@@ -5,23 +5,29 @@ import {icon} from '../assets/style'
 import undo from '../assets/img/arrow-undo-outline.svg'
 
 const OrderButton = () => {
+    const path = document.location.pathname
+    const pathIndex = path.split('/')[path.split('/').length -1]
+    console.log(pathIndex);
     return ( 
         <Col md="12">
             <Row>
                 <Col className=" text-left">
-                    <Button className="btn-light btn-outline-danger m-3">
-                        <Image src={trash} style={icon}/>
-                        Удалить заявку
-                    </Button>
+                    {
+                        pathIndex === 'new' ? '' : 
+                        <Button className="btn-light btn-outline-danger m-3">
+                            <Image src={trash} style={icon}/>
+                            Удалить заявку
+                        </Button>
+                    }
                 </Col>
                 <Col className="text-end text-right">
                     <Button className="btn-info m-3">
                         <Image src={save} style={icon}/>
-                        Внести изменения
+                        { pathIndex === 'new' ? 'Создать заявку' : 'Внести изменения'}
                     </Button>
                     <Button className="btn-warning m-3">
                         <Image src={undo} style={icon}/>
-                        Отменить изменения
+                        { pathIndex === 'new' ? 'Назад' : 'Отменить изменения'}
                     </Button>
                 </Col>
             </Row>
