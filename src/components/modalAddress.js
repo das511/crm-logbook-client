@@ -30,7 +30,14 @@ const ModalAddress = ({show, handleClose}) => {
                     <Form.Control className="mt-3" onChange={(e)=>{ setValue(e.target.value) }} placeholder="Введите улицу"/>
                     <Form.Control className="mt-3" onChange={(e)=>{ setHouse(e.target.value) }} placeholder="Введите номер дома"/>
                     <Form.Control className="mt-3" onChange={(e)=>{ setLiter(e.target.value) }} placeholder="Введите корпус"/>
-                    <Form.Control className="mt-3" onChange={(e)=>{ setNameZkId(e.target.value) }} placeholder="Выберете ЖМ"/>
+                    <Form.Select className="mt-3" onChange={(e)=>{ setNameZkId(e.target.value) }} >
+                        <option selected disabled>Выберете ЖМ</option>
+                        {
+                            order.nameZk.map(({id,value })=> <option key={id} value={id}>{ value }</option>)
+                        }
+                        
+                        
+                    </Form.Select>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
