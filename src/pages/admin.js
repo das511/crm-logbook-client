@@ -20,7 +20,7 @@ const Admin = () => {
 
     return ( 
         <Row>
-            <Col md="2" className="bg-success" style={{height:window.innerHeight}}>
+            <Col md="2" className="bg-success">
                 <Container className="m-2 d-grid gap-2">
                     <Button variant="outline-light p-2 mt-3 d-flex" onClick={() => { setShowNameZk(true) }}>
                         <Image src={ add } style={icon}/>
@@ -49,7 +49,7 @@ const Admin = () => {
                     </Button>
                 </Container>   
             </Col>
-            <AdminRightPanel/>
+            <AdminRightPanel setShowAddress={setShowAddress}/>
             <ModalStatus show={showModalStatus} handleClose={setShowStatus}/>
             <ModalAddress show={showModalAddress} handleClose={setShowAddress}/>
             <ModalNameZk show={showModalNameZk} handleClose={setShowNameZk}/>

@@ -1,12 +1,13 @@
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { useContext } from "react";
 import { Context } from "..";
+import { statusColor } from "../assets/style";
 
-const AdminRightPanel = () => {
+const AdminRightPanel = ({setShowAddress}) => {
     const { order } = useContext(Context)
 
     return ( 
-        <Col md="10">
+        <Col md="10" style={{height:(window.innerHeight/100)*92, overflowY:'scroll', marginBottom:150}}>
             <Container>
                 <Row>
                     <Col className="m-3 border border-success rounded">
@@ -22,11 +23,11 @@ const AdminRightPanel = () => {
                             <tbody>    
                                 {
                                     order.address.map(({id,value, house,liter,nameZkId})=> 
-                                    <tr key={id} className="m-1 p-2">
+                                    <tr key={ id } className="m-1 p-2" onClick={()=>setShowAddress(true)}>
                                         <td>{ value }</td>
                                         <td>{ house }</td>
                                         <td>{ liter }</td>
-                                        <td>{ nameZkId }</td>
+                                        <td>{ order.nameZk.find(zk => nameZkId === zk.id).value }</td>
                                     </tr>)
                                 }
                             </tbody>
@@ -44,7 +45,12 @@ const AdminRightPanel = () => {
                             </thead>
                             <tbody>    
                                 {
-                                    order.status.map(({id,value, color})=> <tr key={id} className="m-1 p-2"><td>{ value }</td><td>{ color }</td></tr>)
+                                    order.status.map(({id,value, color})=> 
+                                        <tr key={id} className="m-1 p-2">
+                                            <td>{ value }</td>
+                                            <td style={statusColor(color)} className="text-center">{ color }</td>
+                                        </tr>
+                                    )
                                 }
                             </tbody>
                         </Table>
