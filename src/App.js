@@ -24,11 +24,12 @@ const App = observer(() => {
 
         await fetchAllOrder().then(data=>order.setOrders(data.rows))
         
-        fetchAll('status').then(data=>order.setStatus(data))
-        fetchAll('postType').then(data=>order.setPostType(data))
-        fetchAll('location').then(data=>order.setLocation(data))
-        fetchAll('nameZk').then(data=>order.setNameZk(data))
-        fetchAll('address').then(data=>order.setAddress(data))
+        await fetchAll('user').then(data=>order.setUser(data))
+        await fetchAll('status').then(data=>order.setStatus(data))
+        await fetchAll('postType').then(data=>order.setPostType(data))
+        await fetchAll('location').then(data=>order.setLocation(data))
+        await fetchAll('nameZk').then(data=>order.setNameZk(data))
+        await fetchAll('address').then(data=>order.setAddress(data))
 
       } catch (error) {
         NotificationManager.error(error.response.data.message || '', 'Ошибка');
