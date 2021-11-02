@@ -7,7 +7,7 @@ import undo from '../assets/img/arrow-undo-outline.svg'
 const OrderButton = () => {
     const path = document.location.pathname
     const pathIndex = path.split('/')[path.split('/').length -1]
-    console.log(pathIndex);
+    
     return ( 
         <Col md="12">
             <Row>
@@ -22,7 +22,7 @@ const OrderButton = () => {
                 </Col>
                 <Col className="text-end text-right">
                     <Button className="btn-info m-3">
-                        <Image src={save} style={icon}/>
+                        <Image src={save} style={icon} />
                         { pathIndex === 'new' ? 'Создать заявку' : 'Внести изменения'}
                     </Button>
                     <Button className="btn-warning m-3">

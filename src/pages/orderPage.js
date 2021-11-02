@@ -26,7 +26,6 @@ const OrderPage = observer( () => {
             <Row>
                 <OrderButton/>
             </Row>
-            
         </Container>
      );
 })
